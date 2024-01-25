@@ -1,7 +1,7 @@
 {
-  "name": "movie-magic",
+  "name": "movie-magic-january-2024",
   "version": "1.0.0",
-  "description": "",
+  "description": "JS Backend Workshop @SoftUni",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js"
