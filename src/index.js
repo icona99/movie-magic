@@ -14,13 +14,14 @@ configExpress(app);
 app.use(routes);
 
 try {
-   mongoose.connect('mongodb://localhost:27017')
-   .then (()=>console.log('DB Connencted'));
-    
+   mongoose.connect('mongodb://127.0.0.1:27017')
+   .then (()=>{console.log('DB Connencted');
+    app.listen(port, () => console.log(`Server is listening on port ${port}...`))
+});
 } catch (error) {
     console.log(error.message);
 }
 
-app.listen(port, () => console.log(`Server is listening on port ${port}...`));
+
 
 
