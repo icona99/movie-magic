@@ -1,37 +1,51 @@
-const {mongoose } = require("mongoose")
+const mongoose = require('mongoose');
 
-const movieSchema=new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
     title: {
-        type:String,
-        required:true
+        type: String,
+        required: true,
     },
-    genre:{
-        
+    genre: {
+        type: String,
+        required: true,
+        lowercase: true,
     },
-    director:{
-       
+    director: {
+        type: String,
+        required: true,
     },
-    year:{
-        
+    year: {
+        type: Number,
+        required: true,
+        min: 1900,
+        max: 2030,
     },
-    rating:{
-        type:Number,
-        required:true,
-        min:1,
-        max:5
+    rating: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5,
     },
-    description:{
-         type:String,
-        required:true,
-        maxLength:1000,
+    description: {
+        type: String,
+        required: true,
+        maxLength: 1000,
     },
-imageUrl:{
-    type:String,
-        required:true,
-        match:/^https?:\/\//
-}
+    imageUrl: {
+        type: String,
+        required: true,
+        match: /^https?:\/\//
+    },
+    casts: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Cast'
+    }],
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
-const Movie=mongoose.model('Movie',movieSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
-module.exports=Movie;
+module.exports = Movie;
